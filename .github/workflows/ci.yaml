@@ -38,8 +38,8 @@ jobs:
             linux/arm64
             linux/amd64
           tags: |
-            finab/bark-server:latest
-            finab/bark-server:${{ steps.vars.outputs.build_version }}
+            adams549659584/bark-server:latest
+            adams549659584/bark-server:${{ steps.vars.outputs.build_version }}
           push: true
       -
         name: Image digest
