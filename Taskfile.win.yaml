@@ -4,19 +4,19 @@ vars:
   BUILD_VERSION:
     sh: git describe --tags
   BUILD_DATE:
-    sh: date "+%F %T"
+    sh: wsl date "+%F %T"
   COMMIT_ID:
     sh: git rev-parse HEAD
 
 tasks:
   clean:
     cmds:
-      - rm -rf dist
-      - mkdir dist
+      - wsl rm -rf dist
+      - wsl mkdir dist
   copy-resource:
     cmds:
-      - cp deploy/* dist
-      - cp -r web dist/web
+      - wsl cp "deploy/*" dist
+      - wsl cp -r web dist/web
   build-tpl:
     label: build-{{.TASK}}
     cmds:
@@ -228,3 +228,6 @@ tasks:
     cmds:
       - task: default
       - ghr -u adams549659584 -t $GITHUB_TOKEN -replace -recreate -name "Bump {{.BUILD_VERSION}}" --debug {{.BUILD_VERSION}} dist
+
+# depends on wsl, ghr(https://github.com/tcnksm/ghr/releases)
+# task -t Taskfile.win.yaml release
