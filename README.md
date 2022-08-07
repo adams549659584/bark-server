@@ -2,7 +2,9 @@
 
 <img src="https://wx3.sinaimg.cn/mw690/0060lm7Tly1g0nfnjjxbbj30sg0sg757.jpg" width=200px height=200px />
 
-这是个人修改版，支持 markdown 推送，适用于私有服务器搭建，原版请查看 [https://github.com/Finb/Bark](https://github.com/Finb/Bark) 
+个人修改版，支持 markdown 推送，适用于私有服务器搭建，原版请查看 [https://github.com/Finb/Bark](https://github.com/Finb/Bark) 
+
+前端源码请查看 [https://github.com/adams549659584/bark-md-reader](https://github.com/adams549659584/bark-md-reader) 
 
 
 ## Push
@@ -22,7 +24,7 @@
 | group (optional) | string | The group of the notification |
 | isArchive (optional) | string | Value must be `1`. Whether or not should be archived by the app |
 | url (optional) | string | Url that will jump when click notification |
-| **markdown** (optional) | string | will create markdown url and replace url |
+| **markdown** (optional) | string | will auto create or replace jump url |
 
 ### curl
 
@@ -30,15 +32,15 @@
 curl -X "POST" "http://127.0.0.1:8080/push" \
      -H 'Content-Type: application/json; charset=utf-8' \
      -d $'{
-  "body": "Test Bark Server",
-  "device_key": "ynJ5Ft4atkMkWeo2PAvFhF",
+  "device_key": "your key",
   "title": "bleem",
+  "body": "Test Bark Server",
   "badge": 1,
   "category": "category",
   "sound": "minuet.caf",
   "icon": "https://day.app/assets/images/avatar.jpg",
   "group": "test",
-  "markdown": "# Bark\\n\\n[Bark](https://github.com/Finb/Bark) is an iOS App which allows you to push customed notifications to your iPhone.\\n\\n\\n## Push\\n\\n| Field | Type | Description |\\n| ----- | ---- | ----------- |\\n| title | string | Notification title (font size would be larger than the body) |\\n| body  | string | Notification content |\\n| category | string | Reserved field, no use yet |\\n| device_key | string | The key for each device |\\n| level (optional) | string | `\'active\'`, `\'timeSensitive\'`, or `\'passive\'` |\\n| badge (optional) | integer | The number displayed next to App icon ([Apple Developer](https://developer.apple.com/documentation/usernotifications/unnotificationcontent/1649864-badge)) |\\n| automaticallyCopy (optional) | string | Must be `1` |\\n| copy (optional) | string |  The value to be copied |\\n| sound (optional) | string | Value from [here](https://github.com/Finb/Bark/tree/master/Sounds) |\\n| icon (optional) | string | An url to the icon, available only on iOS 15 or later |\\n| group (optional) | string | The group of the notification |\\n| isArchive (optional) | string | Value must be `1`. Whether or not should be archived by the app |\\n| url (optional) | string | Url that will jump when click notification |\\n| **markdown** (optional) | string | will create markdown url and replace url |"
+  "markdown": "# markdown title \\n > markdown text"
 }'
 ```
 
@@ -58,7 +60,7 @@ If you use the docker-compose tool, you can copy docker-copose.yaml under this p
 
 ``` sh
 mkdir bark-server && cd bark-server
-curl -sL https://git.io/JvSRl > docker-compose.yaml
+curl -sL https://raw.githubusercontent.com/Finb/bark-server/master/deploy/docker-compose.yaml > docker-compose.yaml
 docker-compose up -d
 ```
 
