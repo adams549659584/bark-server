@@ -107,8 +107,10 @@ func push(c *fiber.Ctx, params map[string]interface{}) error {
 					msg.Sound = val + ".caf"
 				}
 			case "markdown":
-				msg.ExtParams["url"] = getMarkdownUrl(c, val)
-				delete(params, "url")
+				if val != "" {
+					msg.ExtParams["url"] = getMarkdownUrl(c, val)
+					delete(params, "url")
+				}
 			default:
 				msg.ExtParams[strings.ToLower(string(key))] = val
 			}
@@ -164,7 +166,10 @@ func push(c *fiber.Ctx, params map[string]interface{}) error {
 	return c.JSON(success())
 }
 
-func getMarkdownUrl(c *fiber.Ctx, content string) string {
+func getMarkdownUrl(c *fiber.Ctx, content string) string {\
+	if content == "" {
+		return ""
+	}
 	key, err := db.SaveMarkdown(content)
 	if err != nil {
 		logger.Fatalf("failed to save markdown: %v", err)
