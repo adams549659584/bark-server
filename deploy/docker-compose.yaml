@@ -8,3 +8,5 @@ services:
       - ./data:/data
     ports:
       - "8080:8080"
+    # 使用 mysql
+    # command: bark-server -dsn="root:123456@tcp(127.0.0.1:3306)/bark"

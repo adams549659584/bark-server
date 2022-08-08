@@ -19,7 +19,18 @@ const (
 		"    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT," +
 		"    `key` VARCHAR(255) NOT NULL," +
 		"    `token` VARCHAR(255) NOT NULL," +
+		"    `create_time` DATETIME(3) NOT NULL," +
 		"    PRIMARY KEY (`id`)," +
+		"    UNIQUE KEY `key` (`key`)" +
+		") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+
+	MARKDOWN_DB_SCHEMA = "" +
+		"CREATE TABLE IF NOT EXISTS `markdown` (" +
+		"    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT," +
+		"    `key` VARCHAR(255) NOT NULL,    " +
+		"    `content` VARCHAR(255) NOT NULL," +
+		"    `create_time` DATETIME(3) NOT NULL," +
+		"    PRIMARY KEY (`id`), " +
 		"    UNIQUE KEY `key` (`key`)" +
 		") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
 )
@@ -33,6 +44,11 @@ func NewMySQL(dsn string) Database {
 	_, err = db.Exec(dbSchema)
 	if err != nil {
 		logger.Fatalf("failed to init database schema(%s): %v", dbSchema, err)
+	}
+
+	_, err = db.Exec(MARKDOWN_DB_SCHEMA)
+	if err != nil {
+		logger.Fatalf("failed to init database schema(%s): %v", MARKDOWN_DB_SCHEMA, err)
 	}
 
 	mysqlDB = db
@@ -65,7 +81,7 @@ func (d *MySQL) SaveDeviceTokenByKey(key, token string) (string, error) {
 		key = shortuuid.New()
 	}
 
-	_, err := mysqlDB.Exec("INSERT INTO `devices` (`key`,`token`) VALUES (?,?) ON DUPLICATE KEY UPDATE `token`=?", key, token, token)
+	_, err := mysqlDB.Exec("INSERT INTO `devices` (`key`,`token`,`create_time`) VALUES (?,?,current_timestamp(3)) ON DUPLICATE KEY UPDATE `token`=?", key, token, token)
 	if err != nil {
 		return "", err
 	}
@@ -86,7 +102,7 @@ func (d *MySQL) GetMarkdownByKey(key string) (string, error) {
 // Save Markdown Content
 func (d *MySQL) SaveMarkdown(content string) (string, error) {
 	key := shortuuid.New()
-	_, err := mysqlDB.Exec("INSERT INTO `markdown` (`key`,`content`) VALUES (?,?) ON DUPLICATE KEY UPDATE `content`=?", key, content, content)
+	_, err := mysqlDB.Exec("INSERT INTO `markdown` (`key`,`content`,`create_time`) VALUES (?,?,current_timestamp(3)) ON DUPLICATE KEY UPDATE `content`=?", key, content, content)
 	if err != nil {
 		return "", err
 	}
