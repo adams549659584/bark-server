@@ -166,7 +166,7 @@ func push(c *fiber.Ctx, params map[string]interface{}) error {
 	return c.JSON(success())
 }
 
-func getMarkdownUrl(c *fiber.Ctx, content string) string {\
+func getMarkdownUrl(c *fiber.Ctx, content string) string {
 	if content == "" {
 		return ""
 	}
