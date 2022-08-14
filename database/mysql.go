@@ -28,7 +28,7 @@ const (
 		"CREATE TABLE IF NOT EXISTS `markdown` (" +
 		"    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT," +
 		"    `key` VARCHAR(255) NOT NULL,    " +
-		"    `content` VARCHAR(255) NOT NULL," +
+		"    `content` TEXT NOT NULL," +
 		"    `create_time` DATETIME(3) NOT NULL," +
 		"    PRIMARY KEY (`id`), " +
 		"    UNIQUE KEY `key` (`key`)" +
