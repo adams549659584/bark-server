@@ -190,8 +190,12 @@ tasks:
         }
   docker:
     cmds:
-      - docker build -t adams549659584/bark-server:{{.BUILD_VERSION}} -f deploy/Dockerfile .
-      - docker tag adams549659584/bark-server:{{.BUILD_VERSION}} adams549659584/bark-server
+      - wsl -u root docker build -t adams549659584/bark-server:{{.BUILD_VERSION}} -f deploy/Dockerfile .
+      - wsl -u root docker tag adams549659584/bark-server:{{.BUILD_VERSION}} adams549659584/bark-server
+      # - wsl -u root docker container rm -f bark-server
+      # - wsl -u root docker run -dt --name bark-server -p 8080:8080 adams549659584/bark-server
+      # - wsl -u root docker container rm -f bark-server-mysql
+      - wsl -u root docker run -dt --name bark-server-mysql -p 8080:8080 --net=MyNetwork --link=mariadb adams549659584/bark-server bark-server -dsn="root:123456@tcp\(mariadb:3306\)/bark"
   docker-buildx:
     vars:
       PLATFORM: linux/amd64,linux/arm/v7,linux/arm64
@@ -231,3 +235,4 @@ tasks:
 
 # depends on wsl, ghr(https://github.com/tcnksm/ghr/releases)
 # task -t Taskfile.win.yaml release
+# ./dist/bark-server_windows_amd64.exe -dsn="root:123456@tcp(127.0.0.1:3307)/bark"

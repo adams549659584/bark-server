@@ -7,7 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2/utils"
 	"github.com/mritd/logger"
 
-	"github.com/finb/bark-server/v2/apns"
+	"github.com/adams549659584/bark-server/apns"
 
 	"github.com/gofiber/fiber/v2"
 )
