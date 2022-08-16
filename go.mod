@@ -1,8 +1,6 @@
-// +heroku goVersion go1.17
-
 module github.com/adams549659584/bark-server
 
-go 1.17
+go 1.19
 
 require (
 	github.com/go-sql-driver/mysql v1.6.0
@@ -11,9 +9,9 @@ require (
 	github.com/lithammer/shortuuid/v3 v3.0.7
 	github.com/mritd/logger v0.0.6
 	github.com/sideshow/apns2 v0.23.0
-	github.com/urfave/cli/v2 v2.11.1
-	go.etcd.io/bbolt v1.3.5
-	golang.org/x/net v0.0.0-20220403103023-749bd193bc2b
+	github.com/urfave/cli/v2 v2.11.2
+	go.etcd.io/bbolt v1.3.6
+	golang.org/x/net v0.0.0-20220812174116-3211cb980234
 )
 
 require (
@@ -32,6 +30,6 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.7.0 // indirect
 	go.uber.org/zap v1.20.0 // indirect
-	golang.org/x/sys v0.0.0-20220227234510-4e6760a101f9 // indirect
+	golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10 // indirect
 	golang.org/x/text v0.3.7 // indirect
 )

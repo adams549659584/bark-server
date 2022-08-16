@@ -167,12 +167,15 @@ Just run the server with `-dsn=user:pass@tcp(mysql_host)/bark`, it will use MySQ
 
 Please read [API_V2.md](docs/API_V2.md).
 
-## Other Docs
+## Other
 
 ### 中文:
 
-- [https://day.app/2018/06/bark-server-document/](https://day.app/2018/06/bark-server-document/)
-  
+- [https://day.app/2018/06/bark-server-document](https://day.app/2018/06/bark-server-document)
+
+### Markdown support:
+
+- [https://github.com/adams549659584/bark-server](https://github.com/adams549659584/bark-server)
 
 ## Contributing to bark-server
 
