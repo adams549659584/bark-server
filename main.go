@@ -8,7 +8,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/adams549659584/bark-server/database"
+	"github.com/adams549659584/bark-server/v3/database"
 	jsoniter "github.com/json-iterator/go"
 
 	"github.com/gofiber/fiber/v2"

@@ -249,7 +249,7 @@ tasks:
   release:
     cmds:
       - task: default
-      # - ghr -u adams549659584 -t $GITHUB_TOKEN -replace -recreate -name "Bump {{.BUILD_VERSION}}" --debug {{.BUILD_VERSION}} dist
+      - ghr -u adams549659584 -t $GITHUB_TOKEN -replace -recreate -name "Bump {{.BUILD_VERSION}}" --debug {{.BUILD_VERSION}} dist
 
 # depends on wsl, ghr(https://github.com/tcnksm/ghr/releases)
 # task -t Taskfile.win.yaml release

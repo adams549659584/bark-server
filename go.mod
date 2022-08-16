@@ -1,4 +1,4 @@
-module github.com/adams549659584/bark-server
+module github.com/adams549659584/bark-server/v3
 
 go 1.19
 
