@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./data:/data
+      - ./web:/web
     ports:
       - "8080:8080"
     # 使用 mysql
