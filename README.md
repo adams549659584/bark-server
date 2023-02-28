@@ -2,7 +2,9 @@
 
 <img src="https://wx3.sinaimg.cn/mw690/0060lm7Tly1g0nfnjjxbbj30sg0sg757.jpg" width=200px height=200px />
 
-个人修改版，支持 markdown 推送，适用于私有服务器搭建，原版请查看 [https://github.com/Finb/Bark](https://github.com/Finb/Bark) 
+个人修改版，支持 markdown 推送，适用于私有服务器搭建
+
+原版请查看 [https://github.com/Finb/bark-server](https://github.com/Finb/bark-server) 
 
 前端源码请查看 [https://github.com/adams549659584/bark-md-reader](https://github.com/adams549659584/bark-md-reader) 
 
