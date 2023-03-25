@@ -61,7 +61,7 @@ fetch('http://127.0.0.1:8080/push', {
     sound: 'minuet.caf',
     icon: 'https://day.app/assets/images/avatar.jpg',
     group: 'test',
-    markdown: '# markdown title \\n > markdown text',
+    markdown: '# markdown title \n > markdown text',
   }),
 }).then(res => res.json()).then(res => console.log(res));
 ```
