@@ -29,7 +29,7 @@ jobs:
       -
         name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: ./deploy/Dockerfile
@@ -41,6 +41,8 @@ jobs:
             adams549659584/bark-server:latest
             adams549659584/bark-server:${{ steps.vars.outputs.build_version }}
           push: true
+          cache-from: type=registry,ref=${{ github.repository }}:cache
+          cache-to: type=registry,ref=${{ github.repository }}:cache,mode=max          
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
